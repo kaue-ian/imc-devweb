@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="imc.css">
+    <title>Calculadora IMC</title>
+    <script>
+        function Resultado() {
+            const peso = document.getElementById("peso").value;
+            const altura = document.getElementById("altura").value;
+            altura.replace(".",",")
+
+            if(altura == ""){
+                alert("Informe o valor da ALTURA!");
+            }
+            else if(peso == ""){
+                alert("Informe o valor do PESO!");
+            }
+            else{
+                const soma1 = altura * altura;
+                const soma = peso / soma1;
+                document.getElementById("imc").value = soma.toFixed(2);
+            }
+
+            const soma1 = altura * altura;
+            const soma = peso / soma1;
+
+            if (soma < 18.4) {
+                const classe = "Abaixo do peso"
+                document.getElementById('classi').value = classe;
+            }
+            else if(soma < 25){
+                const classe = "Normal"
+                document.getElementById('classi').value = classe;
+            }
+            else if(soma < 30){
+                const classe = "Sobrepeso"
+                document.getElementById('classi').value = classe;
+            }
+            else if(soma < 35){
+                const classe = "Obesidade 1"
+                document.getElementById('classi').value = classe;
+            }
+            else if(soma < 40){
+                const classe = "Obesidade 2"
+                document.getElementById('classi').value = classe;
+            }
+            else if(soma >= 40){
+                const classe = "Obesidade 3"
+                document.getElementById('classi').value = classe;
+            }
+        }
+        function Limpar() {
+            document.getElementById("peso").value = "";
+            document.getElementById("altura").value = "";
+            document.getElementById("imc").value = "";
+            document.getElementById("classi").value = "";
+        }
+    </script>
+</head>
+
+<body>
+    <form>
+        <div class="container">
+            <h1 id="titulo">Calculadora de IMC</h1>
+
+            <div clas>
+                <label for="altura">Altura:</label>
+                <div><input type="number" name="" id="altura" class="inp"  placeholder="Exemplo 1.75"></div>
+            </div>
+            <div>
+                <label for="peso">Peso:</label>
+                <div><input type="number" name="" id="peso" class="inp" placeholder="Exemplo 70"></div>
+            </div>
+            <div>
+                <label for="imc">Seu IMC é de:</label>
+                <div><input type="number" name="" id="imc" disabled></div>
+            </div>
+            <div>
+                <label for="classi">Classificação:</label>
+                <div class="inp"><input type="text" name="" id="classi" disabled></div>
+            </div>
+            <div class="div-button">
+                <input type="button" class="button calc" value="Calcular" onclick="Resultado()">
+                <input type="button" class="button" value="Limpar" onclick="Limpar()">
+            </div>
+        </div>
+    </form>
+
+</body>
+
+</html>
